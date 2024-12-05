@@ -1,0 +1,176 @@
+﻿@page "{slug}" // slug parametresini tanımlıyoruz
+@model WebApplication1.Pages.ProductDetailsModel
+
+<div class="product-container">
+    <!-- Ürünleri tutan ana konteyner -->
+    @for (int i = 0; i < Model.SelectedCategory.products.Count; i++) // Seçilen kategoriye ait ürünler için döngü
+    {
+        <div class="product-item">
+            <!-- Her bir ürünü temsil eden konteyner -->
+            <div class="space"></div> <!-- Ürünler arasında boşluk oluşturma -->
+            <p> PRODUCT @(i + 1) </p> <!-- Ürün sırasını gösterir -->
+            <div class="product-header">
+                <!-- Ürün başlığı ve bilgileri -->
+                <h1 id="product-title">@Model.SelectedCategory.products[i].title</h1> <!-- Ürün başlığı -->
+                <p id="product-category">Kategori: @Model.SelectedCategory.products[i].category</p> <!-- Kategori bilgisi -->
+                <p id="product-brand">Marka: @Model.SelectedCategory.products[i].brand</p> <!-- Marka bilgisi -->
+            </div>
+            <div class="product-image">
+                <!-- Ürün resmini tutan bölüm -->
+                <img id="product-thumbnail" src="@Model.SelectedCategory.products[i].thumbnail"> <!-- Ürün resmi -->
+            </div>
+
+            <div class="product-details">
+                <!-- Ürün detaylarını tutan bölüm -->
+                <p id="product-description">@Model.SelectedCategory.products[i].description</p> <!-- Ürün açıklaması -->
+                <p id="product-price">Fiyat: @Model.SelectedCategory.products[i].price</p> <!-- Ürün fiyatı -->
+                <p id="product-discount">İndirim: @Model.SelectedCategory.products[i].discountPercentage</p> <!-- İndirim yüzdesi -->
+                <p id="product-stock">Stok Durumu: @Model.SelectedCategory.products[i].stock</p> <!-- Stok durumu -->
+                <p id="product-warranty">Garanti: @Model.SelectedCategory.products[i].warrantyInformation</p> <!-- Garanti bilgisi -->
+                <p id="product-shipping">Kargo Bilgisi: @Model.SelectedCategory.products[i].shippingInformation</p> <!-- Kargo bilgisi -->
+                <p id="product-return-policy">İade Politikası: @Model.SelectedCategory.products[i].returnPolicy</p> <!-- İade politikası -->
+                <p id="product-rating">Rating: @Model.SelectedCategory.products[i].rating</p> <!-- Ürün değerlendirmesi -->
+                <p id="product-sku">SKU: @Model.SelectedCategory.products[i].sku</p> <!-- Ürün SKU kodu -->
+                <p id="product-weight">Ağırlık: @Model.SelectedCategory.products[i].weight</p> <!-- Ürün ağırlığı -->
+            </div>
+
+            <div class="product-dimensions">
+                <!-- Ürün boyutlarını tutan bölüm -->
+                <h3>Ürün Boyutları</h3>
+                <p>Genişlik: @Model.SelectedCategory.products[i].dimensions.width</p> <!-- Ürün genişliği -->
+                <p>Yükseklik: @Model.SelectedCategory.products[i].dimensions.height</p> <!-- Ürün yüksekliği -->
+                <p>Derinlik: @Model.SelectedCategory.products[i].dimensions.depth</p> <!-- Ürün derinliği -->
+            </div>
+
+            <h3>Müşteri Yorumları</h3> <!-- Müşteri yorumları başlığı -->
+            @for (int j = 0; j < Model.SelectedCategory.products[i].reviews.Count; j++) // Ürün yorumları için döngü
+            {
+                <div class="product-reviews">
+                    <!-- Yorumları tutan bölüm -->
+                    <ul>
+                        <li>
+                            <strong>@Model.SelectedCategory.products[i].reviews[j].reviewerName</strong> - <em>@Model.SelectedCategory.products[i].reviews[j].date</em> <!-- Yorum yazarı ve tarihi -->
+                            <p>@Model.SelectedCategory.products[i].reviews[j].comment</p> <!-- Yorum metni -->
+                            <p> Rating : @Model.SelectedCategory.products[i].reviews[j].rating</p> <!-- Yorum puanı -->
+                            <p> ReviewerEmail : @Model.SelectedCategory.products[i].reviews[j].reviewerEmail</p> <!-- Yorumcu e-posta adresi -->
+                        </li>
+                    </ul>
+                </div>
+            }
+
+            <h3>Diğer Görseller</h3> <!-- Diğer görseller başlığı -->
+            @for (int j = 0; j < Model.SelectedCategory.products[i].images.Count; j++) // Ürün görselleri için döngü
+            {
+                <div class="product-images">
+                    <!-- Görselleri tutan bölüm -->
+                    <img src="@Model.SelectedCategory.products[i].images[j]" alt="Vivo S1 Image @j"> <!-- Diğer görseller -->
+                </div>
+            }
+        </div> <!-- product-item -->
+    }
+
+</div> <!-- product-container -->
+
+
+
+
+<style>
+        .space{
+        width: 100%; /* Genişliği tam sayfa yapar */
+        height: 10px; /* Yüksekliği 50px olarak ayarlar */
+        background-color: #90EE90; /* Parlak turuncu renk */
+        margin: 20px 0; /* Üst ve alt boşluk */
+        box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.3); /* Hafif gölge efekti ekler */
+        }
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f5f5f5;
+            margin: 0;
+            padding: 0;
+           
+            justify-content: center;
+            align-items: center;
+            
+        }
+
+    .product-container {
+        display: flex;
+        flex-wrap: wrap; /* Taşmayı önlemek için satır sayısını artırır */
+        justify-content: space-between; /* Alanı eşit şekilde dağıtır */
+        max-width: 1000px; /* Maksimum genişlik ayarı */
+        margin: 20px auto; /* Ortalanmış margin */
+    }
+
+    .product-item {
+        background-color: #ffffff;
+        border-radius: 10px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        padding: 20px;
+        margin: 10px; /* Ürünler arasında boşluk bırakır */
+        flex: 0 48%; /* Her ürün %48 genişliğe sahip olur */
+        b .product-header {
+            text-align: center;
+            border-bottom: 1px solid #ddd;
+            padding-bottom: 15px;
+        }
+
+            .product-header h1 {
+                margin: 0;
+                font-size: 24px;
+            }
+
+        .product-image {
+            text-align: center;
+            margin: 20px 0;
+        }
+
+            .product-image img {
+                max-width: 100%;
+                height: auto;
+                border-radius: 5px;
+            }
+
+        .product-details {
+            line-height: 1.6;
+            margin-bottom: 20px;
+        }
+
+        .product-dimensions {
+            border-top: 1px solid #ddd;
+            padding-top: 15px;
+            margin-top: 15px;
+        }
+
+        .product-reviews {
+            border-top: 1px solid #ddd;
+            padding-top: 15px;
+            margin-top: 15px;
+        }
+
+            .product-reviews ul {
+                list-style-type: none;
+                padding: 0;
+            }
+
+            .product-reviews li {
+                background-color: #f9f9f9;
+                margin-bottom: 10px;
+                padding: 10px;
+                border-radius: 5px;
+            }
+
+        .product-images {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+            .product-images img {
+                max-width: 150px;
+                height: auto;
+                margin: 5px;
+                border: 1px solid #ddd;
+                border-radius: 5px;
+            }
+
+</style>
+

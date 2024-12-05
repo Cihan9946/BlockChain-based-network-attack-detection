@@ -1,0 +1,24 @@
+
+services:
+  mongo:
+    image: mongo:latest
+    ports:
+      - 27017:27017
+    volumes:
+      - ./db/mongo:/data/db  # Veritabanı verilerini kalıcı hale getirmek için
+    environment:
+      - MONGO_URI=mongodb://mongo_container:27017
+
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: mongo_app_container
+    depends_on:
+      - mongo
+    volumes:
+      - ./veriler.json:/app/veriler.json  # JSON dosyasını bağlamak için
+    command: python yazdirma.py
+    links:
+      - mongo
+

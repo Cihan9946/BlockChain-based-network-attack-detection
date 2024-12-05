@@ -1,0 +1,40 @@
+[
+    {
+        "timestamp": "2024-10-23T07:52:02.224004",
+        "Kaynak MAC": "d6:31:04:05:2f:ee",
+        "Hedef MAC": "33:33:00:00:00:16",
+        "Kaynak IP": "Bilinmiyor",
+        "Hedef IP": "Bilinmiyor",
+        "Protokol": "MLDv2 - Multicast Listener Report",
+        "Kaynak Port": "Bilinmiyor",
+        "Hedef Port": "Bilinmiyor",
+        "Paket Boyutu": 130,
+        "TTL": "Bilinmiyor",
+        "TCP Bayraklar\u0131": "Yok",
+        "ICMP Tipi": "Yok",
+        "ICMP Kodu": "Yok",
+        "ARP Operasyonu": "Yok",
+        "Paket Y\u00f6n\u00fc": "Giden",
+        "Tehdit Seviyesi": "Low",
+        "_id": "6718ab22a55c1f9e5ef37260"
+    },
+    {
+        "timestamp": "2024-10-23T07:52:21.583010",
+        "Kaynak MAC": "02:42:bc:83:99:ff",
+        "Hedef MAC": "33:33:00:00:00:16",
+        "Kaynak IP": "Bilinmiyor",
+        "Hedef IP": "Bilinmiyor",
+        "Protokol": "MLDv2 - Multicast Listener Report",
+        "Kaynak Port": "Bilinmiyor",
+        "Hedef Port": "Bilinmiyor",
+        "Paket Boyutu": 90,
+        "TTL": "Bilinmiyor",
+        "TCP Bayraklar\u0131": "Yok",
+        "ICMP Tipi": "Yok",
+        "ICMP Kodu": "Yok",
+        "ARP Operasyonu": "Yok",
+        "Paket Y\u00f6n\u00fc": "Giden",
+        "Tehdit Seviyesi": "Low",
+        "_id": "6718ab35a55c1f9e5ef37261"
+    }
+]
